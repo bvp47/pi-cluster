@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cloudflared-origin-cert
+    namespace: linkding
+type: Opaque
+data:
+    cert.pem: ENC[AES256_GCM,data:mziYpIE4Tn5tzdaNLlvhTNmAb9YpzRSd5peK1iLS99+BtqnY3kMY6y0yBniu/M00oFkee12wRQWwM4sx6bdW0GslKnjppLwBZS7ytvZIcx2VkfoxS0/TmYRAU6BbUVG4Akt+6JvzpJp846e/PNDvNpJHaU9Xzj16pbdd9nZuA2KhgX7SqKOI1tyQXPlG7em1w8a74LhmW971DvCWqhyHwTzAdOCTuwTSZ7XldDhFhNN6/mURZfIbNPN021aN4DqHChNBTVyNHenHZX5l6jeubqqx+3712B0JRzQelwNysyG5vvbB9TENnYmmFhEkODfZB5fWg/bUNQ5texYrW41245XvgeMyLyielk5wfvdjPDkTQfXdYFRBMPhGhIQOYebDENv/rknnlmnOOqI3EzUgjF0OWiNukTMOGklTlpFn0M8VwFfy2KD847yBg+1SUYD/k04HLmtwsngtvft/3WkzoiQfJ4w=,iv:7HncczFW6dsY2nUmkHX96g7+ANfUyQCtC+LVvoVWl9w=,tag:ucikzuWf0bGPriRIVzd8mw==,type:str]
+sops:
+    age:
+        - recipient: age1f8wxuw4c8v0u25x2fld7ldqmqtw5jkcjm78jltgu050eqyt3sp8s5z5shx
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0NHNVajZkT1RObHhoNnRB
+            S3dtOC9NaUNKYWpmYXZtNDVkVXE5MEJnRTMwCm9xb0lpanJWbnZrTVhabVp3NzFX
+            T0hiQXFwUytSLzNUOHlQR0VCbzAzanMKLS0tIEZtQkxqSjVaVlpqNHlpbkFSNm9K
+            TmlDOWlNY0ZZaFNDNHl6bFpMVjNLcVkK9SNwDlgG52qPv2yZ83OgzIoTXwsElYvH
+            e1ASh6CMYg4bb84rHtB/6vDJNShSAtiSFltLf5tUTNqMFDGo+dOpig==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-13T21:35:52Z"
+    mac: ENC[AES256_GCM,data:eINRAKRvh0sDwSniieMhdQB6DKn9M9HceJRJlP9eqm7TQPEFN3dZORcLutuYftGWrp/GzAANh6HXjDZeDX/sMTMDntNAm6lgBeCv67R3JD1bzDYvL7LTp0/xHcYKIjCTpP/l4mQL7ipIwx6WKMmP99JSKovFAWAZ7ojNIEftNAU=,iv:D5ZT/f3O4+m/b5cRjsOucP02QGVrgpf8vkfUPlC2E5c=,tag:wgA3euiqU0LuhXCaFdoNRA==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
