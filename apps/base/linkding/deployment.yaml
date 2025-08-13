@@ -26,7 +26,7 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
           envFrom:
-	  - secretRef:
+          - secretRef:
               name: linkding-superuser
 
           volumeMounts:
