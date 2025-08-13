@@ -7,3 +7,4 @@ resources:
   - ldpi-secret.yaml
   - tunnel-credentials.yaml
   - origin-cert.yaml
+  - superuser-secret.yaml
