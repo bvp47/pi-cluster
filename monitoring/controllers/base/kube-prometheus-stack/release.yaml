@@ -1,54 +1,39 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-    name: kube-prometheus-stack
-    namespace: monitoring
+  name: kube-prometheus-stack
+  namespace: monitoring
 spec:
-    interval: 30m
-    chart:
-        spec:
-            chart: kube-prometheus-stack
-            version: 66.2.2
-            sourceRef:
-                kind: HelmRepository
-                name: kube-prometheus-stack
-                namespace: monitoring
-            interval: 12h
-    install:
-        crds: Create
-    upgrade:
-        crds: CreateReplace
-    driftDetection:
-        mode: enabled
-        ignore:
-            - paths:
-                - /metadata/annotations/prometheus-operator-validated
-              target:
-                kind: PrometheusRule
-    values:
-        grafana:
-            adminPassword: ENC[AES256_GCM,data:s5j8Di7Nockbz5fGuK4=,iv:0swSh/8sQ7xKEzkVHUsUpDRdPmpnIiT8/gP37LFGU3A=,tag:IN5yHwAUUBxUwuEnQ+yFYw==,type:str]
-            ingress:
-                enabled: true
-                ingressClassName: traefik
-                hosts:
-                    - grafana.alexsantiago.net
-                tls:
-                    - secretName: grafana-tls
-                      hosts:
-                        - grafana.alexsantiago.net
-sops:
-    age:
-        - recipient: age1f8wxuw4c8v0u25x2fld7ldqmqtw5jkcjm78jltgu050eqyt3sp8s5z5shx
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQWHIzeWhXUGhNV2NLRW5O
-            YWU3WXpWL3BTYVRiOUtOZXNnVHorMHkxWkdJCnllYkc1UW1mQkFmNW9xenM3eHRJ
-            NFFvU1k4S2NRU1M4aUl4dnNPalhGMUUKLS0tIFJYNXp3L01GaTRwbVU2MlhPNnF2
-            ZG0xbXV1bkc0YzVLN3lZNFB5dzdDdm8KJJ+35rBaoUdPFd0X5H/3bieqjRFp0aPT
-            062hcSRJIjezS7OwwoGssM9M6+V+erg6uM4XsvzjxmNj4pbTAB4y9w==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-08-14T20:25:25Z"
-    mac: ENC[AES256_GCM,data:GxbEvp0aG6OfnMBcaV1Wd+OMBJrcT4C/G5eCPreA63V4+LWIgEeXTLjGE2JJhDe/jXJ5evFlvZaYmR3O+keBIWKLdb16WulXWpjPZBw4ZIB4PJ0vpxu8Ca4I6f7knsCVv8dsyt/sGf16LaQ7F4SW+HRjOAuBB3tDuJ6WVy+Es3w=,iv:jien5ljEO9TdfupYuKMQhXH4uPVgDCV+qM4UFEDW3MY=,tag:0MLPE39wVKeV0enhbfBZKg==,type:str]
-    encrypted_regex: ^(.*password|.*Password)$
-    version: 3.10.2
+  interval: 30m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 66.2.2
+      sourceRef:
+        kind: HelmRepository
+        name: kube-prometheus-stack
+        namespace: monitoring
+      interval: 12h
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  driftDetection:
+    mode: enabled
+    ignore:
+      - paths:
+          - /metadata/annotations/prometheus-operator-validated
+        target:
+          kind: PrometheusRule
+  values:
+    grafana:
+      adminPassword: QFBa!!kmwB2K^b
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hosts:
+          - grafana.alexsantiago.net
+        tls:
+          - secretName: grafana-tls-secret
+            hosts:
+              - grafana.alexsantiago.net
