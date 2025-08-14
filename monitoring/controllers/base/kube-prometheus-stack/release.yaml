@@ -28,9 +28,8 @@ spec:
                 - /metadata/annotations/prometheus-operator-validated
               target:
                 kind: PrometheusRule
-    values: null
+values:
     grafana:
-        # Your actual password
         adminPassword: QFBa!!kmwB2K^b
         ingress:
             enabled: true
