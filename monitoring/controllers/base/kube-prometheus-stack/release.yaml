@@ -1,35 +1,58 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: kube-prometheus-stack
-  namespace: monitoring
+    name: kube-prometheus-stack
+    namespace: monitoring
 spec:
-  interval: 30m
-  chart:
-    spec:
-      chart: kube-prometheus-stack
-      version: "66.2.2"
-      #version: "66.x"
-
-      # version: "58.x"
-
-      sourceRef:
-        kind: HelmRepository
-        name: kube-prometheus-stack
-        namespace: monitoring
-      interval: 12h
-  install:
-    crds: Create
-  upgrade:
-    crds: CreateReplace
-  driftDetection:
-    mode: enabled
-    ignore:
-      # Ignore "validated" annotation which is not inserted during install
-      - paths: ["/metadata/annotations/prometheus-operator-validated"]
-        target:
-          kind: PrometheusRule
-  values:
+    interval: 30m
+    chart:
+        spec:
+            chart: kube-prometheus-stack
+            version: 66.2.2
+            #version: "66.x"
+            # version: "58.x"
+            sourceRef:
+                kind: HelmRepository
+                name: kube-prometheus-stack
+                namespace: monitoring
+            interval: 12h
+    install:
+        crds: Create
+    upgrade:
+        crds: CreateReplace
+    driftDetection:
+        mode: enabled
+        ignore:
+            # Ignore "validated" annotation which is not inserted during install
+            - paths:
+                - /metadata/annotations/prometheus-operator-validated
+              target:
+                kind: PrometheusRule
+    values: null
     grafana:
-      adminPassword: bvp47
-
+        # Your actual password
+        adminPassword: QFBa!!kmwB2K^b
+        ingress:
+            enabled: true
+            ingressClassName: traefik
+            hosts:
+                - grafana.alexsantiago.net
+            tls:
+                - secretName: grafana-tls
+                  hosts:
+                    - grafana.alexsantiago.net
+sops:
+    age:
+        - recipient: age1f8wxuw4c8v0u25x2fld7ldqmqtw5jkcjm78jltgu050eqyt3sp8s5z5shx
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQNHVTOXA1aWxCQVpkUklp
+            dGZTZG94T2hZck9pbW1PWlRjVnlBNDVmMzIwCnN1dGdSRnFPNlBNY0VpSExZUVNB
+            QVYxOGVJOERMaktYYmxlbHgxaTRMZmcKLS0tIGFXUjlVL3l5TkQ1bVJUM2t4QXZE
+            dWszcXFERTVySDJVYlBSM09vS3lTYVkKKy3F1jQmm6KmhRhzEyWvMdiTBISshEOk
+            8nhjPCwYnOzndo014CMhZZsGrdzKbiR8TWov/F6fIYHdIniI/awRYg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-14T19:37:52Z"
+    mac: ENC[AES256_GCM,data:4whIbI44HBDO7xfQbGC4/X5UIuCRd5y44SGNmU4lW/uAVgPTwi4aJfkhHe3hE2nBGpEB+waASIYEiGV/YqmYm3t75RIwvg4PsbUawXf6bPhEsd1Gl6s66kdAK76BkuHP+G41cnuPa4vBFws9gAYWdfFaEgu+Mp8hRqnmz2gL+Rc=,iv:MX5v1iLhUKZXoFperqAOvdF/UwN4S/+tjT/34tmPFs4=,tag:9x++XUz+W3cmjInrzurEEw==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
