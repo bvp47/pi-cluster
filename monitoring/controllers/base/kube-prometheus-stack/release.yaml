@@ -28,18 +28,18 @@ spec:
                 - /metadata/annotations/prometheus-operator-validated
               target:
                 kind: PrometheusRule
-values:
-    grafana:
-        adminPassword: QFBa!!kmwB2K^b
-        ingress:
-            enabled: true
-            ingressClassName: traefik
-            hosts:
-                - grafana.alexsantiago.net
-            tls:
-                - secretName: grafana-tls
-                  hosts:
+    values:
+        grafana:
+            adminPassword: QFBa!!kmwB2K^b
+            ingress:
+                enabled: true
+                ingressClassName: traefik
+                hosts:
                     - grafana.alexsantiago.net
+                tls:
+                    - secretName: grafana-tls
+                      hosts:
+                        - grafana.alexsantiago.net
 sops:
     age:
         - recipient: age1f8wxuw4c8v0u25x2fld7ldqmqtw5jkcjm78jltgu050eqyt3sp8s5z5shx
@@ -51,7 +51,7 @@ sops:
             dWszcXFERTVySDJVYlBSM09vS3lTYVkKKy3F1jQmm6KmhRhzEyWvMdiTBISshEOk
             8nhjPCwYnOzndo014CMhZZsGrdzKbiR8TWov/F6fIYHdIniI/awRYg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-08-14T19:37:52Z"
-    mac: ENC[AES256_GCM,data:4whIbI44HBDO7xfQbGC4/X5UIuCRd5y44SGNmU4lW/uAVgPTwi4aJfkhHe3hE2nBGpEB+waASIYEiGV/YqmYm3t75RIwvg4PsbUawXf6bPhEsd1Gl6s66kdAK76BkuHP+G41cnuPa4vBFws9gAYWdfFaEgu+Mp8hRqnmz2gL+Rc=,iv:MX5v1iLhUKZXoFperqAOvdF/UwN4S/+tjT/34tmPFs4=,tag:9x++XUz+W3cmjInrzurEEw==,type:str]
+    lastmodified: "2025-08-14T19:51:13Z"
+    mac: ENC[AES256_GCM,data:E7DYvAaTSpInVTudztsniHGogKwhayVUd3fjH/IqhVo+SqTXJ4VC2RnCzCcgHyF3lWlRBJCpdTjrSlZDQi5SMhoC1F3oRgceo6aWb1q8y/vsaj2wbLnhN9I57zqEe19CfC8twoCTZwggY58gfto1CCsLT5CF4msdfSadjoKkuqM=,iv:SfLNqkz+MNtdMP8e+6pgO/E4aF/QZFtao90abfl1XeU=,tag:8QATTAMJ3cBE4FUqQyJFeQ==,type:str]
     encrypted_regex: ^(data|stringData)$
     version: 3.10.2
