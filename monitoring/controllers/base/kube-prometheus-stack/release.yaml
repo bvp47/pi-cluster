@@ -1,39 +1,54 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: kube-prometheus-stack
-  namespace: monitoring
+    name: kube-prometheus-stack
+    namespace: monitoring
 spec:
-  interval: 30m
-  chart:
-    spec:
-      chart: kube-prometheus-stack
-      version: 66.2.2
-      sourceRef:
-        kind: HelmRepository
-        name: kube-prometheus-stack
-        namespace: monitoring
-      interval: 12h
-  install:
-    crds: Create
-  upgrade:
-    crds: CreateReplace
-  driftDetection:
-    mode: enabled
-    ignore:
-      - paths:
-          - /metadata/annotations/prometheus-operator-validated
-        target:
-          kind: PrometheusRule
-  values:
-    grafana:
-      adminPassword: QFBa!!kmwB2K^b
-      ingress:
-        enabled: true
-        ingressClassName: traefik
-        hosts:
-          - grafana.alexsantiago.net
-        tls:
-          - secretName: grafana-tls-secret
-            hosts:
-              - grafana.alexsantiago.net
+    interval: 30m
+    chart:
+        spec:
+            chart: kube-prometheus-stack
+            version: 66.2.2
+            sourceRef:
+                kind: HelmRepository
+                name: kube-prometheus-stack
+                namespace: monitoring
+            interval: 12h
+    install:
+        crds: Create
+    upgrade:
+        crds: CreateReplace
+    driftDetection:
+        mode: enabled
+        ignore:
+            - paths:
+                - /metadata/annotations/prometheus-operator-validated
+              target:
+                kind: PrometheusRule
+    values:
+        grafana:
+            adminPassword: ENC[AES256_GCM,data:iR8uAQQz0sperUHFZ7Q=,iv:t+gha5ixK2xwnbBGwDDYfrRAtaX7RHobwI6KB72bUOk=,tag:z2mclABnFN9cLkUftQhS6Q==,type:str]
+            ingress:
+                enabled: true
+                ingressClassName: traefik
+                hosts:
+                    - grs.alexsantiago.net
+                tls: []
+                    #- secretName: grafana-tls-secret
+                    #  hosts:
+                    #    - grafana.alexsantiago.net
+sops:
+    age:
+        - recipient: age1f8wxuw4c8v0u25x2fld7ldqmqtw5jkcjm78jltgu050eqyt3sp8s5z5shx
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBiMURqRG1pOVZ3bW1NdStj
+            WkpzVjVXL2xYZjQrRy9xeTMvVnZIclNEV1g0CndDcVpyTFhwTnM2d3pPYUxjOHpZ
+            MUs3SzJQTVhMQk54UVRKcnE5OGo3U0EKLS0tIHlaLzdtMXBZWlRmUUpJSGc3aDE3
+            Titia0V1NWFrclJLUFd5U3hwdHc2Y3MKxXjVoopzONl2XSShyOuJdRhVrM8P4hFr
+            wBS/ecL3A44XsfjpK1yE/7uK7RsA6XAYbVuUnymsZ8d39wrQb3J3Ww==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-14T21:50:25Z"
+    mac: ENC[AES256_GCM,data:a/0jJadtfYl3BruEjKNSznCbHF5lSfMNTkmIyUYM2VzwyNcwd09qTcc7W4gpWgIqMRlvbuLZMN96DGEb7DAizlh1PCWZaxEVwTXswtVzIiDPQU3ViVzArGxN17az+QAYJf77abQo0qTH8pId+NJLf/o23T/wC+va7pUbjQESpFw=,iv:WJfr3O1MhC50rjFlpLJr3fryIFWHxQKu98Uy7xguhQI=,tag:O/TkUlfDjCGqQ6leaSIcxw==,type:str]
+    encrypted_regex: ^(.*password|.*Password)$
+    version: 3.10.2
