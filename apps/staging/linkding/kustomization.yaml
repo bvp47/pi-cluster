@@ -8,3 +8,4 @@ resources:
   #- tunnel-credentials.yaml
   #- origin-cert.yaml
   - superuser-secret.yaml
+  - ingess.yaml
