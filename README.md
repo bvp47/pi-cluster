@@ -25,13 +25,20 @@ A GitOps-managed Kubernetes cluster running on Raspberry Pi hardware with Flux C
 - **GitOps**: Infrastructure as code with version control
 
 ## 📁 Repository Structure
-├── apps/                    # Application deployments
-├── clusters/staging/        # Cluster configuration
-├── monitoring/             # Prometheus & Grafana stack
-│   ├── controllers/        # Monitoring controllers
-│   └── configs/           # Monitoring configurations
-└── flux-system/           # Flux CD system components
-
+```
+pi-cluster/
+├── apps/                           # Application deployments
+│   ├── base/                       # Base application configs
+│   └── staging/                    # Staging environment apps
+├── clusters/staging/               # Cluster configuration
+│   └── monitoring.yaml             # Monitoring kustomization
+├── monitoring/                     # Prometheus & Grafana stack
+│   ├── controllers/                # Monitoring controllers
+│   │   ├── base/                   # Base monitoring configs
+│   │   └── staging/                # Staging monitoring
+│   └── configs/                    # Monitoring configurations
+└── flux-system/                    # Flux CD system components
+```
 ## 🛠️ Key Technologies
 
 - **k3s** - Lightweight Kubernetes
