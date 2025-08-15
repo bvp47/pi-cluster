@@ -27,7 +27,7 @@ spec:
                 kind: PrometheusRule
     values:
         grafana:
-            adminPassword: ENC[AES256_GCM,data:bj+xL4ucdDrSRV8ibkY=,iv:eaOHrhFergzw+KXAemDzfgMaQ5jaepgn/+5MkHzfY0I=,tag:LmOzrV5d8IGvjW79oOBw6g==,type:str]
+            adminPassword: ENC[AES256_GCM,data:uLVrIJdokxyCMXd2WF0=,iv:cZwKI/K7HuI2uxAKL1ulMH25itpxA+RSY61+RyOcIN4=,tag:AptNEfRV4HmdB4SiytppJA==,type:str]
             ingress:
                 enabled: true
                 ingressClassName: traefik
@@ -38,13 +38,13 @@ sops:
         - recipient: age1f8wxuw4c8v0u25x2fld7ldqmqtw5jkcjm78jltgu050eqyt3sp8s5z5shx
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBRYml0b3NzRlM4Tld6REU1
-            L0c3eSt3SkE3TkNYMzRlRDJPQ1ZvaC9hSlVjCkNKSnoyQ3d0Nm12bGxtUzA2Q3hJ
-            ZGw4TTNDaGt1MmJKV093aFdCd21IZ0kKLS0tIDVHYXVGd1BpVVJzdjdkSjN2VjU5
-            c0lTSlc0bDhGZjhWN2hJdDNVb3pPL0EKMtlO2OXIsOjMi956qK9g+IwmCqRuy7ZW
-            SFK3EkVRFutxit743ssvtnUvci8P6zJUBTF4/IueRk/XU1DQuxoxvA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBJS3k3cWZ6aDVFVnpwUFRW
+            WUtaZHZsczcvODBibUcxWkhuNDh6QjhQU3hVCmlqSVk1ajFxbU5TdlJESWljNzNh
+            QXBxSDZacVVPbG1BYmhYZHNVaml6WmMKLS0tIEVpcDlZRDZrZkpidnJOT1RqQ3Jj
+            RWl1K3M3YUM0QlB5K1VLY2FyRE9sN2sKD+9edFe8fwgPjVnuIq33cYbRRPydrM2h
+            SS2wZL5Yt5FO42ZezP63IiLp0f5hv4EngAce8txxYcI8iXRP/zWKag==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-08-15T02:00:49Z"
-    mac: ENC[AES256_GCM,data:x7tV6u6rOinB9hgUbhsnJ8i60T/SUowt8XBE0BsY9eyW2XTZXNvHcxQynsA38PH1rnPCpdhl/B7ywogEll7wVl2qpz7Gn+S9yuU58r1vaoHAg6C4RHfppKuV9nWjrk0R2yzvtA1w09dg5Ahss0rnJ5gnXWft1qxqC/UEjV3/TPA=,iv:9ortaGUNJmOBoP+mfON5VTSyeNAo4T+arglGkv55msk=,tag:kQEQlBxhTzuOI7EvPnOjzg==,type:str]
+    lastmodified: "2025-08-15T02:10:29Z"
+    mac: ENC[AES256_GCM,data:groAXxq74kjegzgjgonuvpMMHI1VU9NHhwraSite0B8v0fgdbG33KdzJA4CXAM9DK5d8c6/dAbzyowz0/KNyzRJIbZvYSVeLl3vyYmzxoRqWL3Cr9vJZU98xcXUmUuZoCFCjtsKPQNQ8fSqo0S8HsaovwpyXtzlmO5s0BBwWFY8=,iv:CadIoQupsEVu/EVoyD+4zBE3tmM2oc105MlM2P0E/u4=,tag:qmY/MtToVxyfLJ1OW9it6w==,type:str]
     encrypted_regex: ^(.*password|.*Password)$
     version: 3.10.2
