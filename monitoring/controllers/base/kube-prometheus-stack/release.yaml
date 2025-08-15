@@ -32,8 +32,8 @@ spec:
                 enabled: true
                 ingressClassName: traefik
                 hosts:
-                    - grs.alexsantiago.net
-                tls: []
+                    - grafana.alexsantiago.net
+                #tls: []
                     - secretName: grafana-tls-secret
                       hosts:
                         - grafana.alexsantiago.net
