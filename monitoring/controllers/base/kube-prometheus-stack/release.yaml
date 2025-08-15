@@ -1,35 +1,50 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: kube-prometheus-stack
-  namespace: monitoring
+    name: kube-prometheus-stack
+    namespace: monitoring
 spec:
-  interval: 30m
-  chart:
-    spec:
-      chart: kube-prometheus-stack
-      version: 66.2.2
-      sourceRef:
-        kind: HelmRepository
-        name: kube-prometheus-stack
-        namespace: monitoring
-      interval: 12h
-  install:
-    crds: Create
-  upgrade:
-    crds: CreateReplace
-  driftDetection:
-    mode: enabled
-    ignore:
-      - paths:
-          - /metadata/annotations/prometheus-operator-validated
-        target:
-          kind: PrometheusRule
-  values:
-    grafana:
-      adminPassword: QFBa!!kmwB2K^b
-      ingress:
-        enabled: true
-        ingressClassName: traefik
-        hosts:
-          - grafana.alexsantiago.net
+    interval: 30m
+    chart:
+        spec:
+            chart: kube-prometheus-stack
+            version: 66.2.2
+            sourceRef:
+                kind: HelmRepository
+                name: kube-prometheus-stack
+                namespace: monitoring
+            interval: 12h
+    install:
+        crds: Create
+    upgrade:
+        crds: CreateReplace
+    driftDetection:
+        mode: enabled
+        ignore:
+            - paths:
+                - /metadata/annotations/prometheus-operator-validated
+              target:
+                kind: PrometheusRule
+    values:
+        grafana:
+            adminPassword: ENC[AES256_GCM,data:X9OL0BzJnRYmg7btZOU=,iv:1xkYwdGLZc7B5mbqVNLHVBf0ET8XTb4wSBUGFTHGylw=,tag:klJtI4PW01P7RutxQs6L7A==,type:str]
+            ingress:
+                enabled: true
+                ingressClassName: traefik
+                hosts:
+                    - grafana.alexsantiago.net
+sops:
+    age:
+        - recipient: age1f8wxuw4c8v0u25x2fld7ldqmqtw5jkcjm78jltgu050eqyt3sp8s5z5shx
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDN0JNVXVUWkM3RFJZWmVh
+            NC9sb0I3Y0krdkd0RjJaV3F3NmJpRG1iMno4Ci9VUElYcko2ZjIxcW5iOWxiSHJ4
+            Z1RqYUFhL1VZRVhXNkR4ejZiMXRtMlkKLS0tIHMxb3dqRDR5MjA0YWc4ajZTcEY0
+            MG8rM29mdWUzMnVlY2JSZTNKNlcvSUEKLh9+NJTRHpYF5jgp6pXHioSBcmm1Q+QM
+            PF2e9D8GQNY2LrbBHxyN+wnE10wpKBwmIA6kL+8oPyT58SqdTd7k1A==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-15T02:19:12Z"
+    mac: ENC[AES256_GCM,data:CfeJpbzVZq+a7QY4badVAS+tjXOxmjrnONNQFCb64RhPNWu4ls7WhWAvy3HgqK4SGe06Z1vT6iFo6fQTr948KovSLtDIE02iR+GKUuN3On0WXnq4am2yuYixttHESkIWarXYdqJlz/za0p3tbLzJLCkjwO4NTGRmMiI1Tz63vho=,iv:vrLU/K0BrLbNiEzDpN5eRTXresLlJIPMXoSj+sLwneU=,tag:O+RKcYkQ3IqzRXpm47bH1w==,type:str]
+    encrypted_regex: ^(adminPassword)$
+    version: 3.10.2
