@@ -25,3 +25,31 @@ A GitOps-managed Kubernetes cluster running on Raspberry Pi hardware with Flux C
 - **GitOps**: Infrastructure as code with version control
 
 ## 📁 Repository Structure
+├── apps/                    # Application deployments
+├── clusters/staging/        # Cluster configuration
+├── monitoring/             # Prometheus & Grafana stack
+│   ├── controllers/        # Monitoring controllers
+│   └── configs/           # Monitoring configurations
+└── flux-system/           # Flux CD system components
+
+## 🛠️ Key Technologies
+
+- **k3s** - Lightweight Kubernetes
+- **Flux CD** - GitOps continuous delivery
+- **SOPS** - Secrets encryption
+- **Traefik** - Ingress controller
+- **Helm** - Package management
+- **Prometheus/Grafana** - Monitoring stack
+
+## 🎯 Features
+
+✅ Automated deployments via Git  
+✅ Encrypted secrets in public repo  
+✅ Custom domain names with HTTPS  
+✅ Complete monitoring stack  
+✅ Local-only network security  
+✅ Infrastructure as code  
+
+---
+
+*Built with ❤️ for learning Kubernetes and GitOps*
