@@ -34,9 +34,9 @@ spec:
                 hosts:
                     - grs.alexsantiago.net
                 tls: []
-                    #- secretName: grafana-tls-secret
-                    #  hosts:
-                    #    - grafana.alexsantiago.net
+                    - secretName: grafana-tls-secret
+                      hosts:
+                        - grafana.alexsantiago.net
 sops:
     age:
         - recipient: age1f8wxuw4c8v0u25x2fld7ldqmqtw5jkcjm78jltgu050eqyt3sp8s5z5shx
